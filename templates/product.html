@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Management</title>
+</head>
+<body>
+    <h2>Add Product</h2>
+    <form method="POST">
+        Product ID: <input name="product_id" required><br>
+        Name: <input name="name" required><br>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <h3>All Products</h3>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.product_id }} - {{ product.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">Back to Home</a>
+    <h3>All Products</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.product_id }}</td>
+        <td>{{ product.name }}</td>
+        <td>
+            <a href="{{ url_for('edit_product', product_id=product.product_id) }}">Edit</a> |
+            <a href="{{ url_for('delete_product', product_id=product.product_id) }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

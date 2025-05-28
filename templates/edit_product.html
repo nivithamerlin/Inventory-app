@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+</head>
+<body>
+    <h2>Edit Product</h2>
+    <form method="POST">
+        Product ID: <strong>{{ product.product_id }}</strong><br>
+        Name: <input name="name" value="{{ product.name }}"><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="{{ url_for('products') }}">Back to Product List</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><title>Product Movements</title></head>
+<body>
+    <h2>Record Product Movement</h2>
+    
+    <form method="POST">
+        Product:
+        <select name="product_id" required>
+            {% for p in products %}
+            <option value="{{ p.product_id }}">{{ p.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        From Location (can be blank):
+        <select name="from_location">
+            <option value="">-- None --</option>
+            {% for l in locations %}
+            <option value="{{ l.location_id }}">{{ l.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        To Location (can be blank):
+        <select name="to_location">
+            <option value="">-- None --</option>
+            {% for l in locations %}
+            <option value="{{ l.location_id }}">{{ l.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        Quantity: <input type="number" name="qty" required><br>
+        <button type="submit">Record Movement</button>
+    </form>
+
+    <h3>Movement History</h3>
+    <table border="1">
+        <tr>
+            <th>Date</th><th>Product</th><th>From</th><th>To</th><th>Qty</th>
+        </tr>
+        {% for m in movements %}
+        <tr>
+            <td>{{ m.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>{{ m.product_id }}</td>
+            <td>{{ m.from_location or '-' }}</td>
+            <td>{{ m.to_location or '-' }}</td>
+            <td>{{ m.qty }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

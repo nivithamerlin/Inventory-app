@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Stock Report</title></head>
+<body>
+    <h2>Product Balance Report</h2>
+    <table border="1">
+        <tr>
+            <th>Product</th>
+            <th>Location</th>
+            <th>Quantity</th>
+        </tr>
+        {% for row in report %}
+        <tr>
+            <td>{{ row.product_id }}</td>
+            <td>{{ row.location_id }}</td>
+            <td>{{ row.qty }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

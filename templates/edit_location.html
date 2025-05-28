@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Location</title></head>
+<body>
+    <h2>Edit Location</h2>
+    <form method="POST">
+        Location ID: {{ location.location_id }}<br>
+        Name: <input name="name" value="{{ location.name }}"><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="{{ url_for('locations') }}">Back to Location List</a>
+</body>
+</html>
